@@ -94,8 +94,8 @@ initializeServer = function() {
       res.render('chat');
     });
 
-    app.get('/profile_page', function(req, res) {
-      res.render('profile_page');
+    app.get('/profile', function(req, res) {
+      res.render('profile');
     });
 };
 
