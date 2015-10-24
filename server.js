@@ -68,7 +68,7 @@ var setupVariables = function() {
  *  the handlers.
  */
 initializeServer = function() {
-    app.set('views', path.join(__dirname, 'views'));
+    app.set('views', __dirname+'/views');
     app.set('view engine', 'ejs');
 
     app.use(morgan('dev'));
@@ -86,6 +86,18 @@ initializeServer = function() {
     // session.
     app.use(passport.initialize());
     app.use(passport.session());
+
+    app.get('/index', function(req, res) {
+      res.render('index');
+    });
+
+    app.get('/chat', function(req, res) {
+      res.render('chat');
+    });
+
+    app.get('/profile_page', function(req, res) {
+      res.render('profile_page');
+    });
 };
 
 var initialize = function() {
