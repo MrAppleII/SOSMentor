@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="SOS Mentors" content="Peer to Peer Mentoring">
+		<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+		<meta name="Team Tiffanie" content="HackingEDU Project">
+		<!-- API's: Moxtra, Twilio, Back& (?) -->
+		<!-- Twitter Bootstrap -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/normalize.css" />
+
+
+		<!-- Include Moxtra JavaScript Library -->
+        <script type="text/javascript" src="https://www.moxtra.com/api/js/moxtra-latest.js" id="moxtrajs"></script>
+        
+        <!-- Authenticate/Initialize and get the "Access Token" for the user -->
+        <!-- Refer to the doc at https://developer.moxtra.com/docs/docs-oauth/#uniqueid to authenticate user based on UniqueID Method -->
+        <!-- For other authentication methods and overview refer to the doc at https://developer.moxtra.com/docs/docs-authentication/ -->
+        <!-- In this example user is authenticated and access token is passed as a URL parameter -->
+        <!-- JS function to get access token from the URL parameter -->
+        <script type="text/javascript" >
+            function getURLParameter(name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+            }
+            function parseURI() {
+                var uri = window.location.hash.substring(1);
+                var elements = uri.split('&');
+                var data = new Object();
+                for(i = 0; i < elements.length; i++) {
+                    var cur = elements[i].split('=');
+                    data[cur[0]] = cur[1];
+                }
+                return data;
+            }
+            urldata = parseURI();
+            access_token=urldata.access_token;
+            if (access_token) {
+                // Initialize Moxtra SDK Object
+                var options = {
+                    mode: "production", 
+                    client_id: "r3muLyOsAxQ", //
+                    access_token: access_token,
+                    invalid_token: function(event) {
+                        //Triggered when the access token is expired or invalid
+                        alert("Access Token expired for session id: " + event.session_id);
+                    }
+                };
+                Moxtra.init(options);
+            }
+            else {
+                //Authenticate and get access token for the user before proceeding further
+                console.log ("No access token found");
+            }
+        </script>
+        
+        <!-- Start Chat Function -->
+        <script type="text/javascript">
+        function start_chat () {            
+            var chat_options = {
+                //unique id of the users who will be part of the chat. These users should already exist in Moxtra.
+                unique_id: "unique_user_id_2,unique_user_id_3",  
+                iframe: true,
+                //ID of the HTML tag within which the chat window will show up. Refer https://developer.grouphour.com/moxo/docs-js-sdk/#conversation
+                tagid4iframe: "chat-container",
+                iframewidth: "1000px",
+                iframeheight: "750px",                
+                autostart_meet: true,
+                autostart_note: true,
+                extension: { "show_dialogs": { "member_invite": true } },
+                start_chat: function(event) {
+                    console.log("Chat started binder ID: " + event.binder_id);
+                    //Your application server can upload files to draw using the binder_id and access_token
+                },
+                start_meet: function(event) {
+                    console.log("Meet started session key: " + event.session_key + " session id: " + event.session_id);
+                },
+                end_meet: function(event) {
+                    console.log("Meet end event");
+                },
+                invite_member: function(event) {
+                    console.log("Invite member into binder Id: " + event.binder_id);
+                },
+                request_note: function(event) {
+                    console.log("Note start request");
+                },
+                error: function(event) {
+                    console.log("Chat error code: " + event.error_code + " error message: " + event.error_message);
+                }
+            };            
+            Moxtra.chat(chat_options);
+        }
+        </script>
+
+	</head>
+	<body>
+	<div class="box">
+		<a href="#"><h1><span class="red">SOS</span> Mentors</h1></a>
+		<ul>
+			<li>Mentors</li>
+			<li>Classes</li>
+			<li>Chat</li>
+			<li>Sign Up</li>
+		</ul>
+	</div>
+
+	<div class="container-fluid">
+		<div class="col-md-3 ">
+			<p>hello this is a wall of text and I am just testing this out</p>
+		</div>
+		<div class="col-md-3">
+			<p>hello here's another wall of text and I am checking to see how far it will span</p>
+		</div>
+		<div class="col-md-3">
+			<p>hello</p>
+		</div>
+		<div class="col-md-3">
+			<p>hello</p>
+		</div>
+	</div>
+
+	<h3><a id="getToken" href="javascript:start_chat();">Moxtra Chat</a></h3>
+    <div id="chat-container"></div>
+
+
+	<script src="js/vendor/jquery-1.11.3.min.js"></script>
+	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+	</body>
+</html>
