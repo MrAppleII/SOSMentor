@@ -3,7 +3,7 @@ var router = express.Router();
 
 module.exports = function(passport) {
   router.get('/', function (req, res) {
-    res.render('index', { user: req.user });
+    res.render('profile', { user: req.user });
   });
 
   router.get('/login', function (req, res) {
@@ -13,8 +13,8 @@ module.exports = function(passport) {
   router.post(
     '/login',
     passport.authenticate('local', {
+      successRedirect: '/index',
       successRedirect: '/chat',
-      successRedirect: '/profile',
       failureRedirect: '/login',
       failureFlash: true
     })

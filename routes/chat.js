@@ -1,9 +1,29 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/chat', function(req, res) {
-  res.render('chat');
-});
+module.exports = function(passport) {
+  router.get('/', function (req, res) {
+    res.render('chat', { user: req.user });
+  });
 
-module.exports = router;
+  router.get('/login', function (req, res) {
+    res.render('login', { message: req.flash('loginMessage') });
+  });
+
+  router.post(
+    '/login',
+    passport.authenticate('local', {
+      successRedirect: '/index',
+      successRedirect: '/profile',
+      failureRedirect: '/login',
+      failureFlash: true
+    })
+  );
+
+  router.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/');
+  });
+
+  return router;
+}

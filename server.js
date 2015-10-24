@@ -89,14 +89,19 @@ initializeServer = function() {
 
 
     app.use('/index', require('./routes/index')(passport));
+    /*app.get('/index', function(req, res) {
+      res.render('index');
+    });*/
 
-    app.get('/chat', function(req, res) {
+    app.use('/chat', require('./routes/chat')(passport));
+    /*app.get('/chat', function(req, res) {
       res.render('chat');
-    });
+   });*/
 
-    app.get('/profile', function(req, res) {
+   app.use('/profile', require('./routes/profile')(passport));
+    /*app.get('/profile', function(req, res) {
       res.render('profile');
-    });
+   });*/
 };
 
 var initialize = function() {
