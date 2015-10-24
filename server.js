@@ -76,7 +76,7 @@ initializeServer = function() {
     app.use(require('cookie-parser')());
     app.use(require('body-parser').urlencoded({ extended: true }));
     app.use(require('express-session')({
-      secret: 'praise rox',
+      secret: 'yaassss study',
       resave: false,
       saveUninitialized: true
     }));
@@ -87,9 +87,8 @@ initializeServer = function() {
     app.use(passport.initialize());
     app.use(passport.session());
 
-    app.get('/index', function(req, res) {
-      res.render('index');
-    });
+
+    app.use('/index', require('./routes/index')(passport));
 
     app.get('/chat', function(req, res) {
       res.render('chat');
