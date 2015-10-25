@@ -1,0 +1,16 @@
+{
+   "name": "SOSMentor",
+   "version": "0.0.1",
+   "description": "Node.js app matches students for mentor/mentee",
+   "dependencies": {
+      "express": "4.13.3",
+      "passport": "0.3.0",
+      "passport-local": "1.0.0",
+      "connect-flash": "0.1.1",
+      "morgan": "1.6.1",
+      "express-session": "1.11.3",
+      "express3-handlebars": "0.5.2",
+      "connect-mongo": "0.8.2",
+      "mongo": "0.1.0"
+   }
+}
