@@ -1,0 +1,501 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="SOS Mentors" content="Peer to Peer Mentoring">
+<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+<meta name="Team Tiffanie" content="HackingEDU Project">
+<!-- API's: Moxtra, Twilio, Back& (?) -->
+<!-- Twitter Bootstrap -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href='https://fonts.googleapis.com/css?family=Lato:400,700,300' rel='stylesheet' type='text/css'>
+<style>
+
+a, h1, p, h2{
+    font-family: 'Lato', sans-serif;
+}
+
+h2 {
+    font-weight: normal;
+    font-size: 30px;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.textbox p {
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+body {
+	background-color: #FFE6DE;
+}
+
+.box {
+    box-shadow: 3px 3px 8px #888888;
+}
+
+.box h1 {
+    background-color: #fff;
+    margin: 0;
+    padding-left: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 40px;
+    color: #888;
+    text-shadow: 1px 1px #000;
+    font-weight: lighter;
+}
+
+a:hover, a:visited, a:link{
+    text-decoration: none;
+}
+
+.box h1 span {
+    color: #fff;
+    text-shadow: 2px 2px #B00800;
+    font-weight: normal;
+    -webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: #B00800;
+}
+
+.box ul {
+    text-align: right;
+    background-color: #7F736F;
+}
+
+.box li {
+    display: inline;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: #E5531F;
+}
+
+.box li a {
+	color: #fff;
+	font-size: 16px;
+	font-weight: lighter;
+    display: inline;
+}
+
+.box li a:hover {
+	color: #000;
+}
+
+.separator1 {
+	background:  url("sep1bg.jpg");
+	border-style: solid;
+	border-width: 1px;
+	border-color: #756D67;
+	margin: 0;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.separator1 h1, .separator2 h1, .separator3 h1 {
+	padding-top: 80px;
+	padding-bottom: 80px;
+	text-align: center;
+	color: #fff;
+	text-shadow: 2px 2px 2px #000;
+}
+
+.separator2 {
+    background:  url("sep2bg.jpg");
+    border-style: solid;
+    border-width: 1px;
+    border-color: #756D67;
+    margin: 0;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.separator3 {
+    background:  url("sep3bg.jpg");
+    border-style: solid;
+    border-width: 1px;
+    border-color: #756D67;
+    margin: 0;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.textbox {
+    background-color: #fff;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+footer {
+    height: 200px;
+    text-align: center;
+    padding-top: 70px;
+    background-color: #E5DED9;
+    margin-top: 30px;
+    color: #888;
+    font-weight: lighter;
+    border-top: solid 1px #BFB9B5;
+}
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers:
+ */
+
+.hidden {
+    display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 1.25dppx),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
+@media screen and (max-width: 647px) {
+    .box a {
+        text-align: center;
+        display: block;
+    }
+}
+</style>
+</head>
+<body>
+<div class="box">
+	<a href="#"><h1><span class="red">SOS</span> Mentors</h1></a>
+	<ul>
+		<li><a href="#mentors">Mentors</a></li>
+		<li><a href="#classes">Classes</a></li>
+		<li><a href="#">Chat</a></li>
+		<li><a href="#">Sign Up</a></li>
+        <li><a href="#">Log In</a></li>
+	</ul>
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-12 separator1">
+	<h1>ON DEMAND PEER TO PEER MENTORING</h1>
+	</div>
+</div>
+<div class="container textbox">
+	<div class="col-md-6">
+        <h2>Peer to Peer Mentorship</h2>
+		<p>As students we often go through a roller coaster ride of frustration and success trying to accomplish our educational goals. We sometimes feel alone, behind, confused or lost. That is why community is so important, and it is often missing or difficult to develop at our schools. This tool enables students to develop a collaborative community by being connected anonymously and randomly for on demand mentoring sessions. Students can request mentoring help from those who have already completed their class, as well as the incentive of extra credit from teachers and scholarships to mentor others who are in classes they have taken.
+</p>
+	</div>
+	<div class="col-md-6">
+        <h2>How does it work?</h2>
+		<p>A user registers for our app and are then paired up for a mentoring session with another student above or below their current experience level. The app maintains anonymity so that students feel safe to ask any question. It incorporates a rating system to allow both users to give feedback, which is then tracked for teachers to view and offer extra credit. We also utilize donations from mentees to provide scholarships to students with excellent mentoring reviews.
+</p>
+	</div>
+
+</div>
+<A NAME="mentors"></A>
+<div class="container-fluid">
+    <div class="col-md-12 separator2">
+    <h1>MENTORING</h1>
+    </div>
+</div>
+
+<div class="container textbox">
+    <div class="col-md-6">
+        <p>As a mentor, users will provide advice and support to other users who are in classes they’ve previously taken. Our mentor users have a unique opportunity to provide quality mentoring, cement their recently acquired knowledge, earn extra credit and scholarships! Mentees will gain valuable insights to help them in their classes, increasing grades and success rates. This two way communication fosters community spirit on campus and encourages students to support and get to know each other for lasting effects.
+        </p>
+    </div>
+    <div class="col-md-6">
+        <p>
+            <!-- _______________ MORE CONTENT????? ____________________ -->
+        </p>
+    </div>
+</div>
+
+<A NAME="classes"></A>
+<div class="container-fluid">
+    <div class="col-md-12 separator3">
+        <h1>MORE INFO</h1>
+    </div>
+</div>
+
+<div class="container textbox">
+    <div class="col-md-6">
+        <p>Beta available at College of San Mateo. Made for students, by students. To get our services at your school please contact our team at sosmentor.csm@gmail.com
+        </p>
+    </div>
+    <div class="col-md-6">
+        <p>
+        <!-- _______________ MORE CONTENT????? ____________________ -->
+        </p>
+    </div>
+</div>
+
+<footer>
+    <p>Copyright SOS Mentors 2015<br>
+    Powered by the Moxtra API<br>
+    Built in a weekend at HackingEDU 2015
+    </p>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/vendor/jquery-1.11.3.min.js"></script>
+<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+<!-- Moxtra API Javascript File -->
+<script type="text/javascript" src="https://www.moxtra.com/api/js/moxtra-latest.js" id="moxtrajs" />
+</body>
+</html>
