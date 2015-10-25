@@ -1,4 +1,4 @@
-var db_uri = '127.0.0.1:27017/praise';
+var db_uri = '127.0.0.1:27017/sosmentors';
 var collections = ['users'];
 
 if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
