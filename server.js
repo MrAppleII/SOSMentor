@@ -6,7 +6,7 @@ var flash = require('connect-flash');
 var morgan = require('morgan');
 var expressSession = require('express-session');
 var expressHbs = require('express3-handlebars');
-var mongoUrl = 'mongodb://localhost:27017/dbname';
+var mongoUrl = 'mongodb://127.0.0.1:27017/dbname';
 var MongoStore = require('connect-mongo')(expressSession);
 var mongo = require('./mongo');
 var db = require('./db');
@@ -101,6 +101,7 @@ initializeServer = function() {
     app.use('/index', require('./routes/index')(passport));
     app.use('/chat', require('./routes/chat')(passport));
     app.use('/profile', require('./routes/profile')(passport));
+    app.use('/login', require('./routes/profile')(passport));
 };
 
 var initialize = function() {
