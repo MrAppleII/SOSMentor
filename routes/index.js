@@ -14,7 +14,7 @@ module.exports = function(passport) {
     '/login',
     passport.authenticate('local', {
       successRedirect: '/chat',
-      successRedirect: '/profile_page',
+      successRedirect: '/profile',
       failureRedirect: '/login',
       failureFlash: true
     })

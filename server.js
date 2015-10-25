@@ -4,12 +4,17 @@ var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 var morgan = require('morgan');
+var expressSession = require('express-session');
+var expressHbs = require('express3-handlebars');
+var mongoUrl = 'mongodb://127.0.0.1:27017/dbname';
+var MongoStore = require('connect-mongo')(expressSession);
+var mongo = require('./mongo');
 var db = require('./db');
 
 var app = express();
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP;
-var port = process.env.OPENSHIFT_NODEJS_PORT || 8081;
+var port = process.env.PORT || 8081;
 
 
 // Configure the local strategy for use by Passport.
@@ -53,6 +58,8 @@ passport.deserializeUser(function(id, cb) {
   });
 });
 
+
+
 var setupVariables = function() {
     //  Set the environment variables we need.
     if (typeof ipaddress === "undefined") {
@@ -75,8 +82,11 @@ initializeServer = function() {
 
     app.use(require('cookie-parser')());
     app.use(require('body-parser').urlencoded({ extended: true }));
-    app.use(require('express-session')({
+    app.use(expressSession({
       secret: 'yaassss study',
+      store: new MongoStore({
+         url: mongoUrl
+      }),
       resave: false,
       saveUninitialized: true
     }));
@@ -89,14 +99,9 @@ initializeServer = function() {
 
 
     app.use('/index', require('./routes/index')(passport));
-
-    app.get('/chat', function(req, res) {
-      res.render('chat');
-    });
-
-    app.get('/profile', function(req, res) {
-      res.render('profile');
-    });
+    app.use('/chat', require('./routes/chat')(passport));
+    app.use('/profile', require('./routes/profile')(passport));
+    app.use('/login', require('./routes/profile')(passport));
 };
 
 var initialize = function() {
